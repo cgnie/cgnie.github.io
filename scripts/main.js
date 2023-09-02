@@ -17,12 +17,13 @@ let myHeading = document.querySelector("h1");
 
 function setUserName() {
     let myName = prompt("please type your name");
-    if (!myName) {
-      setUserName();
-    } else {
-      localStorage.setItem("name", myName);
-      myHeading.textContent = "It's so coooooool, " + myName;
+    if (myName === null){
+      myName = "Visitor"
     }
+
+    localStorage.setItem("name", myName);
+    myHeading.textContent = "It's so coooooool, " + myName;
+    
   }
   
 myButton.onclick = function () {
