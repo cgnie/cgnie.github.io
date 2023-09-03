@@ -5,35 +5,53 @@
   }
    */
 html {
-  font-size: 10px; /* px 表示“像素（pixel）”: 基础字号为 10 像素 */
-  font-family: "Open Sans", sans-serif; /* 这应该是你从 Google Fonts 得到的其余输出。 */
-  background-color: #00539f;
+  font-size: 10px;
+  /* px 表示“像素（pixel）”: 基础字号为 10 像素 */
+  font-family: "Open Sans", sans-serif;
+  /* 这应该是你从 Google Fonts 得到的其余输出。 */
+  background-color: #96B6C5;
+  /* background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%); */
+  height: 95%;
 }
+
 img {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
-  
+
 body {
-    width: 600px;
-    margin: 0 auto;
-    background-color: #ff9500;
-    padding: 0 20px 20px 20px;
-    border: 5px solid black;
+  width: 600px;
+  height: 95%;
+  margin: 0 auto;
+  /* background-color: #F1F0E8; */
+  padding: 0 20px 20px 20px;
+  /* border: 5px solid black; */
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #EEE0C9 100%);
 }
-  
+
 h1 {
-    margin: 0;
-    padding: 20px 0;
-    color: #00539f;
-    /* text-shadow: 3px 3px 1px black; */
-    text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  color: #00539f;
+  /* text-shadow: 3px 3px 1px black; */
+  text-align: center;
 }
-  
-  
-p, li {
-    font-size: 16px;
-    line-height: 2;
-    letter-spacing: 1px;
-  }
-  
+
+li {
+  font-size: 16px;
+  /* color: rebeccapurple; */
+  line-height: 2;
+  letter-spacing: 1px;
+  /* list-style-type: none; */
+}
+
+p {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+.special {
+  color: red;
+  font-weight: bold;
+}

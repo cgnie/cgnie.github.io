@@ -16,19 +16,18 @@ let myButton = document.querySelector("button");
 let myHeading = document.querySelector("h1");
 
 function setUserName() {
-    let myName = prompt("please type your name");
-    if (myName === null){
-      myName = "Visitor"
-    }
-
-    localStorage.setItem("name", myName);
-    myHeading.textContent = "It's so coooooool, " + myName;
-    
+  let myName = prompt("please type your name");
+  if (myName === null) {
+    myName = "Visitor"
   }
-  
-myButton.onclick = function () {
-    setUserName();
-};
-  
 
-  
+  localStorage.setItem("name", myName);
+  myHeading.textContent = "It's so coooooool, " + myName;
+
+}
+
+myButton.onclick = function () {
+  setUserName();
+};
+
+
