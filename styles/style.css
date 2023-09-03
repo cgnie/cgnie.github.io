@@ -11,7 +11,7 @@ html {
   /* 这应该是你从 Google Fonts 得到的其余输出。 */
   background-color: #96B6C5;
   /* background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%); */
-  height: 95%;
+  height: 98%;
 }
 
 img {
@@ -21,7 +21,7 @@ img {
 
 body {
   width: 600px;
-  height: 95%;
+  height: 98%;
   margin: 0 auto;
   /* background-color: #F1F0E8; */
   padding: 0 20px 20px 20px;
