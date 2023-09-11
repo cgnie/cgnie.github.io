@@ -68,7 +68,19 @@ p {
   color: black;
 }
 
+a:link,
+a:visited {
+  color: rebeccapurple;
+  font-weight: bold;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+
 @media (min-width: 70em) {
+
   /* 在更大的屏幕或窗口中提高全局的字体大小以提高可读性 */
   body {
     font-size: 130%;
