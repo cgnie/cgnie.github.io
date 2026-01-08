@@ -1,0 +1,37 @@
+{
+  "name": "github-io-website",
+  "version": "1.0.0",
+  "description": "个人GitHub Pages网站 - 展示对数学、计算机科学和AI编程的兴趣",
+  "main": "scripts/main.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "github-pages",
+    "personal-website",
+    "portfolio"
+  ],
+  "author": "cg Nie",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jsdom": "^20.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "scripts/**/*.js",
+      "!scripts/**/*.test.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    }
+  }
+}

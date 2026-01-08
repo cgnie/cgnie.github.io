@@ -1,0 +1,35 @@
+# GitHub Pages Jekyll 配置
+# 性能优化配置
+
+# 基本设置
+title: cg - 个人网站
+description: 展示对数学、计算机科学和AI编程的兴趣
+url: https://cgnie.github.io
+baseurl: ""
+
+# 构建设置
+markdown: kramdown
+theme: null
+
+# 性能优化
+exclude:
+  - .git
+  - .gitignore
+  - README.md
+  - LICENSE
+  - node_modules
+  - .DS_Store
+  - .vscode
+
+# 缓存设置
+keep_files:
+  - images
+  - styles
+  - scripts
+
+# 压缩设置
+sass:
+  style: compressed
+
+# 输出设置
+output: _site

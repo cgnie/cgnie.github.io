@@ -1,39 +1,93 @@
-<!doctype html>
-<html lang="en-US">
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="author" content="cg Nie" />
-  <meta name="description" content="This is cg Nie's first learning page." />
-
-  <meta name="viewport" content="width=device-width" />
-  <title>My test page</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-  <link href="styles/style.css" rel="stylesheet" />
-  <script src="scripts/login.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="个人GitHub Pages网站 - 展示对数学、计算机科学和AI编程的兴趣">
+    <meta name="keywords" content="数学, 计算机科学, AI编程, web site">
+    <meta name="author" content="cgnie">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="cgnie- web site">
+    <meta property="og:description" content="展示对数学、计算机科学和AI编程的兴趣">
+    <meta property="og:image" content="images/a.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="cgnie - web site">
+    <meta property="twitter:description" content="展示对数学、计算机科学和AI编程的兴趣">
+    <meta property="twitter:image" content="images/a.jpg">
+    
+    <title>cgnie - web site</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
-  <h1>This is me!</h1>
-  <img src="images/a.jpg" alt="My test image" width="300" height="300" />
-  <p>
-    Hello, everyone!
-  </p>
-  <div class="outer">
-    <div class="box">
-      <p>I'm interested in</p>
-      <ul>
-        <li class="special"><strong>Math</strong></li>
-        <li>Computer science</li>
-        <li>coding</li>
-      </ul>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-logo">cgnie</h1>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- Hero 区域 -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-image">
+                    <img src="images/a.jpg" alt="cgnie的个人照片" class="profile-image" loading="eager" decoding="async">
+                </div>
+                <div class="hero-contact">
+                    <a href="mailto:piecivalnie@gmail.com" class="email-link" id="emailLink">
+                        📧 piecivalnie@gmail.com
+                    </a>
+                </div>
+                <div class="hero-text">
+                    <h1 class="hero-title">Hello, I'm cgnie! 👋</h1>
+                    <p class="hero-subtitle">I'm interested in Math 📊, Computer Science 💻, AI coding 🤖</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 兴趣展示区域 -->
+        <section class="interests-section">
+            <div class="interests-container">
+                <h2 class="section-title">我的兴趣领域</h2>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon">📊</div>
+                        <h3>数学 (Math)</h3>
+                        <p>探索数学的美妙世界，从基础理论到应用数学</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">💻</div>
+                        <h3>计算机科学 (Computer Science)</h3>
+                        <p>深入研究算法、数据结构和软件工程</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🤖</div>
+                        <h3>AI编程 (AI Coding)</h3>
+                        <p>人工智能和机器学习的实践与应用</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 cgnie. All rights reserved.</p>
+            <p>Built with ❤️ for GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- 通知消息 -->
+    <div class="notification" id="notification">
+        <span class="notification-text" id="notificationText"></span>
     </div>
-  </div>
 
-
-  <p><a href="contract.html">working together</a></p>
-  <p>This is my <a href="contract.html#Mailing_address">Email Address</a></p>
-  <button onclick="login_redict()">Login</button>
+    <script src="scripts/main.js"></script>
 </body>
-
 </html>
