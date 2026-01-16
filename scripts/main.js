@@ -91,7 +91,7 @@ function handleEmailClick(event) {
     // Detect if email client is available
     // This is a simplified detection, actual cases may be more complex
     const userAgent = navigator.userAgent.toLowerCase();
-    const hasEmailClient = userAgent.includes('outlook') || 
+    const hasEmailClient = userAgent.includes('gmail') || 
                           userAgent.includes('thunderbird') ||
                           userAgent.includes('mail');
     
