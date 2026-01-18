@@ -240,6 +240,7 @@ body {
     overflow: hidden;
     isolation: isolate;
     cursor: pointer;
+    transform-origin: bottom left;
 }
 
 .interest-card:hover {
@@ -248,19 +249,217 @@ body {
     box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
 }
 
-/* 移除背景虚化层 */
-.interest-card::before {
-    display: none;
+.interest-card.expanded {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50vw;
+    height: 50vh;
+    z-index: 1000;
+    transform: scale(1);
+    border-color: var(--primary-color);
+    box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+    overflow-y: auto;
+    animation: expandCard 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* 移除渐变边框层 */
-.interest-card::after {
-    display: none;
+@keyframes expandCard {
+    from {
+        transform: scale(0.3);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-/* 移除遮罩层 */
-.interest-card-mask {
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.card-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-details {
     display: none;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.interest-card.expanded .card-details {
+    display: flex;
+    animation: fadeInDetails 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInDetails {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid transparent;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+    transform: translateX(-20px);
+    opacity: 0;
+    animation: slideInDetail 0.4s ease-out forwards;
+}
+
+.detail-item:nth-child(1) { animation-delay: 0.4s; }
+.detail-item:nth-child(2) { animation-delay: 0.5s; }
+.detail-item:nth-child(3) { animation-delay: 0.6s; }
+.detail-item:nth-child(4) { animation-delay: 0.7s; }
+.detail-item:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes slideInDetail {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.detail-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary-color);
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.detail-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.detail-text {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+}
+
+/* 气泡提示框 */
+.detail-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: var(--surface-color);
+    color: var(--text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-small);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.detail-item::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--surface-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+    z-index: 1001;
+}
+
+.detail-item:hover::after,
+.detail-item:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-12px);
+}
+
+.detail-item:hover::before {
+    transform: translateX(-50%) translateY(-6px);
+}
+
+/* 关闭按钮 */
+.close-button {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.interest-card.expanded .close-button {
+    display: flex;
+    animation: fadeIn 0.3s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    transform: scale(1.1);
+}
+
+/* 背景遮罩 */
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+}
+
+.card-overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* 为每个卡片添加不同的延迟 */
@@ -283,31 +482,21 @@ body {
 
 .interest-icon {
     font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
     position: relative;
     z-index: 1;
     display: inline-block;
+    flex-shrink: 0;
 }
 
 .interest-card h3 {
     font-size: var(--font-size-h3);
     font-weight: 700;
     color: var(--text-color);
-    margin-bottom: var(--spacing-sm);
     position: relative;
     z-index: 1;
     letter-spacing: -0.02em;
     line-height: 1.3;
-}
-
-.interest-card p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-    font-size: var(--font-size-body);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    margin: 0;
 }
 
 .email-link {
@@ -439,6 +628,28 @@ body {
         padding: var(--spacing-lg);
     }
     
+    .interest-card.expanded {
+        top: 10%;
+        left: 5%;
+        width: 90vw;
+        height: 80vh;
+    }
+    
+    .detail-item::after {
+        position: fixed;
+        bottom: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: normal;
+        max-width: 250px;
+        text-align: center;
+    }
+    
+    .detail-item::before {
+        display: none;
+    }
+    
     .notification {
         right: var(--spacing-md);
         left: var(--spacing-md);
@@ -456,6 +667,33 @@ body {
     
     .interest-card {
         padding: var(--spacing-md);
+    }
+    
+    .interest-card.expanded {
+        top: 5%;
+        left: 2.5%;
+        width: 95vw;
+        height: 90vh;
+        padding: var(--spacing-lg);
+    }
+    
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .detail-item {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .detail-icon {
+        font-size: 1.25rem;
+    }
+    
+    .detail-text {
+        font-size: var(--font-size-small);
     }
     
     .nav-container {

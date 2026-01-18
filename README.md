@@ -169,7 +169,7 @@ MIT License - 详见 LICENSE 文件
 
 ## 联系方式
 
-- 📧 邮箱：your.email@example.com
+- 📧 邮箱：piecivalnie@gmail.com
 - 🔗 GitHub：https://github.com/cgnie
 
 ## 更新日志
