@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preload" href="styles/style.css" as="style">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -42,7 +43,7 @@
                     <img src="images/a.jpg" alt="cgnie的个人照片" class="profile-image" loading="eager" decoding="async">
                 </div>
                 <div class="hero-contact">
-                    <a href="mailto:piecivalnie@gmail.com" class="email-link" id="emailLink">
+                    <a href="mailto:piecivalnie@gmail.com" class="email-link">
                         📧 piecivalnie@gmail.com
                     </a>
                 </div>
@@ -65,6 +66,10 @@
                         </div>
                         <p class="card-description">探索数学的美妙世界，从基础理论到应用数学</p>
                         <div class="card-details">
+                            <div class="detail-item" data-tooltip="解释万物的数学物理模型">
+                                <span class="detail-icon">🌍</span>
+                                <span class="detail-text">微分方程理论及其应用</span>
+                            </div>
                             <div class="detail-item" data-tooltip="线性代数是现代数学的基础">
                                 <span class="detail-icon">🔢</span>
                                 <span class="detail-text">线性代数与矩阵理论</span>
@@ -148,6 +153,38 @@
                 </div>
             </div>
         </section>
+
+        <!-- 项目展示区域 -->
+        <section class="projects-section">
+            <div class="projects-container">
+                <h2 class="section-title">我的项目</h2>
+                <div class="projects-grid">
+                    <!-- FastMinato 项目卡片 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>FastMinato</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/cgnie/FastMinato" target="_blank" rel="noopener" class="project-link">
+                                    <span>⭐</span> GitHub
+                                </a>
+                                <a href="https://pypi.org/project/FastMinato/" target="_blank" rel="noopener" class="project-link">
+                                    <span>📦</span> PyPI
+                                </a>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            FastMinato is a high-performance command-line proxy tool that manages upstream proxy connections (SOCKS4/5, HTTP/HTTPS). It provides a convenient way to run commands with proxy or enable global proxy mode in your terminal.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CLI</span>
+                            <span class="tech-tag">Proxy</span>
+                            <span class="tech-tag">Networking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- 页脚 -->
@@ -157,11 +194,6 @@
             <p>Built with ❤️ for GitHub Pages</p>
         </div>
     </footer>
-
-    <!-- 通知消息 -->
-    <div class="notification" id="notification">
-        <span class="notification-text" id="notificationText"></span>
-    </div>
 
     <script src="scripts/main.js"></script>
 </body>

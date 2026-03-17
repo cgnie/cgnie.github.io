@@ -1,6 +1,6 @@
 /* CSS 变量定义 */
 :root {
-    /* Kiro 风格配色方案 */
+    /* 配色方案 */
     --primary-color: #6366f1;
     --primary-hover: #4f46e5;
     --secondary-color: #8b5cf6;
@@ -12,14 +12,14 @@
     --card-background: #18181b;
     --border-color: #27272a;
     --shadow-color: rgba(0, 0, 0, 0.5);
-    
+
     /* 字体大小 */
     --font-size-h1: 2.5rem;
     --font-size-h2: 1.875rem;
     --font-size-h3: 1.25rem;
     --font-size-body: 1rem;
     --font-size-small: 0.875rem;
-    
+
     /* 间距系统 */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -27,13 +27,13 @@
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-xxl: 3rem;
-    
+
     /* 布局 */
     --container-max-width: 1280px;
     --content-max-width: 1024px;
     --border-radius: 12px;
     --border-radius-lg: 16px;
-    
+
     /* 动画 */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
@@ -243,12 +243,6 @@ body {
     transform-origin: bottom left;
 }
 
-.interest-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-color);
-    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
-}
-
 .interest-card.expanded {
     position: fixed;
     top: 25%;
@@ -256,11 +250,11 @@ body {
     width: 50vw;
     height: 50vh;
     z-index: 1000;
-    transform: scale(1);
     border-color: var(--primary-color);
     box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
     overflow-y: auto;
     animation: expandCard 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    padding: var(--spacing-xl);
 }
 
 @keyframes expandCard {
@@ -441,6 +435,36 @@ body {
     color: var(--text-color);
     transform: scale(1.1);
 }
+.close-button {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.interest-card.expanded .close-button {
+    display: flex;
+    animation: fadeIn 0.3s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    transform: scale(1.1);
+}
 
 /* 背景遮罩 */
 .card-overlay {
@@ -462,6 +486,103 @@ body {
     pointer-events: all;
 }
 
+/* 项目展示区域 */
+.projects-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--background-color);
+}
+
+.projects-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.project-card {
+    background: var(--card-background);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.4s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.project-header h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.project-links {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.project-link:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.tech-tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--secondary-color);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+}
+
 /* 为每个卡片添加不同的延迟 */
 .interest-card:nth-child(1) {
     animation-delay: 0.1s;
@@ -473,11 +594,6 @@ body {
 
 .interest-card:nth-child(3) {
     animation-delay: 0.3s;
-}
-
-.interest-card:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 40px var(--shadow-color);
 }
 
 .interest-icon {
@@ -506,35 +622,11 @@ body {
     font-size: var(--font-size-body);
     transition: color var(--transition-fast);
     display: inline-block;
-    margin-bottom: 0;
     letter-spacing: -0.01em;
 }
 
 .email-link:hover {
     color: var(--primary-hover);
-}
-
-.copy-button {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: calc(var(--border-radius) / 2);
-    cursor: pointer;
-    font-size: 0.75rem;
-    transition: background-color var(--transition-fast);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.copy-button:hover {
-    background-color: var(--primary-color);
-}
-
-.copy-button:active {
-    transform: scale(0.95);
-    animation: pulse 0.3s ease-out;
 }
 
 /* 页脚 */
@@ -560,45 +652,6 @@ body {
 
 .footer p:last-child {
     margin-bottom: 0;
-}
-
-/* 通知消息 */
-.notification {
-    position: fixed;
-    top: 100px;
-    right: var(--spacing-md);
-    background-color: var(--secondary-color);
-    color: white;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px var(--shadow-color);
-    transform: translateX(100%);
-    transition: transform var(--transition-fast);
-    z-index: 1001;
-}
-
-.notification.show {
-    animation: slideInRight 0.3s ease-out forwards;
-}
-
-.notification.success {
-    background-color: #27ae60;
-}
-
-.notification.error {
-    background-color: var(--accent-color);
-}
-
-/* 通知消息进入动画 */
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
 }
 
 /* 响应式设计 */
@@ -649,11 +702,6 @@ body {
     .detail-item::before {
         display: none;
     }
-    
-    .notification {
-        right: var(--spacing-md);
-        left: var(--spacing-md);
-    }
 }
 
 @media (max-width: 480px) {
@@ -703,6 +751,24 @@ body {
     .interests-container {
         padding: 0 var(--spacing-md);
     }
+
+    .projects-container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .project-links {
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
 
 /* 高对比度模式支持 */
@@ -713,6 +779,10 @@ body {
     }
     
     .interest-card {
+        border: 2px solid var(--border-color);
+    }
+
+    .project-card {
         border: 2px solid var(--border-color);
     }
 }
